@@ -90,16 +90,16 @@
         $('#main').show();
         $('#test').hide();
         type = 'Local';
-        $type.attr('class', 'localstorage').html('Local');
+        $type.attr('class', 'localstorage').html('L');
     }
     else if (localStorage['type'] === 'Session') {
         type = 'Session';
-        $type.attr('class', 'sessionstorage').html('Session');
+        $type.attr('class', 'sessionstorage').html('S');
         $('#main').show();
         $('#test').hide();
     } else {
         type = 'Cookies';
-        $type.attr('class', 'cookies').html('Cookies');
+        $type.attr('class', 'cookies').html('C');
         $('#main').hide();
         $('#test').show();
     }
@@ -151,10 +151,10 @@
     });
 
     $('#type').on('click', function () {
-        if ($(this).html() === 'Local') {
+        if ($(this).html() === 'L') {
             localStorage['type'] = 'Session';
         }
-        else if ($(this).html() === 'Session') {
+        else if ($(this).html() === 'S') {
             localStorage['type'] = 'Cookies';
         } else {
             localStorage['type'] = 'Local';
@@ -245,6 +245,18 @@
             });
         });
 
+    });
+
+    $('#import').click(function(e) {
+        e.preventDefault();
+    
+        var json = prompt((type === 'Local' ? 'Local' : 'Session') + ' storage data (JSON):');
+    
+        if (json) {
+            executeScript({ type: type, what: 'import', json: json }, function() {
+                location.reload();
+            });
+        }
     });
 
 

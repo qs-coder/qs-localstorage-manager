@@ -59,6 +59,17 @@ switch (msg.what) {
     case 'export':
         result = JSON.stringify(getStorage(), null, 4);
         break;
+    case 'import':
+        try {
+            var obj = JSON.parse(msg.json);
+            for (var i in obj) {
+                if (obj.hasOwnProperty(i)) {
+                    storage.setItem(i, obj[i]);
+                }
+            }
+        }
+        catch(e) {}
+        break;
 }
 
 result;
