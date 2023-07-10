@@ -10,7 +10,7 @@
       "48": "img/48x48.png"
    },
    "manifest_version": 2,
-   "name": "Storage & Cookies",
+   "name": "QingShi Storage & Cookies",
    "offline_enabled": true,
    "permissions": [
       "activeTab",
@@ -35,5 +35,5 @@
          "/js/ga.js"
       ]
    },
-   "version": "2.4"
+   "version": "1.0"
 }
